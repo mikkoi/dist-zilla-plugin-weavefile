@@ -178,7 +178,7 @@ if the tests have failed.
     # usage: dzil weave [<file>]
     dzil weave README.md
     # or, to create all files (or none if no defined)
-    dzil policies
+    dzil weave
 
 During the I<build> phase, when L<Dist::Zilla::Plugin::Test::WeaveFile>
 prepares the test files, it runs the file generation
