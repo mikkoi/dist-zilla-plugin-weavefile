@@ -11,7 +11,7 @@ use feature qw( say );
 
 # ABSTRACT: Create files by weaving them from POD, metadata, and snippets
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 use Carp qw( croak );
 use Dist::Zilla::App -command;

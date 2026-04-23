@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use 5.010;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 use Carp qw( croak );
 use Path::Tiny qw( path );

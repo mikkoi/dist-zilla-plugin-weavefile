@@ -7,7 +7,7 @@ use 5.010;
 
 # ABSTRACT: Create project files by weaving together POD, metadata, and snippets
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 use Moose;
 with 'Dist::Zilla::Role::Plugin';
