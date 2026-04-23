@@ -9,16 +9,26 @@ use 5.010;
 our $VERSION = '0.001';
 
 use Carp qw( croak );
-use Data::Dumper;
 use Path::Tiny qw( path );
 use YAML qw( LoadFile );
 use Template;
 use Pod::Markdown;
 
+=pod
+
+=encoding utf8
+
+=head1 METHODS
+
+=head2 new
+
+Create a new engine class.
+
+=cut
+
 sub new {
     my ($class, %args) = @_;
     croak 'config_path is required' unless $args{config_path};
-    say Dumper(\%args);
     return bless {
         config_path => $args{config_path},
         root_dir    => $args{root_dir} // q{.},
@@ -27,6 +37,12 @@ sub new {
         _pod_cache  => {},
     }, $class;
 }
+
+=head2 config
+
+Return config
+
+=cut
 
 sub config {
     my $self = shift;
@@ -38,10 +54,22 @@ sub config {
     return $self->{_config};
 }
 
+=head2 available_files
+
+return list of available files.
+
+=cut
+
 sub available_files {
     my $self = shift;
     return keys %{ $self->config->{files} // {} };
 }
+
+=head2 render_file
+
+Return a ready file as string.
+
+=cut
 
 sub render_file {
     my ($self, $filename) = @_;
@@ -83,6 +111,12 @@ sub render_file {
 
     return $output;
 }
+
+=head2 extract_pod_section
+
+Extract pod section from a source file and return it.
+
+=cut
 
 sub extract_pod_section {
     my ($self, $source, $section_name) = @_;

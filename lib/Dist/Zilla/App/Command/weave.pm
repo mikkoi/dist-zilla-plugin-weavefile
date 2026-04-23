@@ -14,7 +14,6 @@ use feature qw( say );
 our $VERSION = '0.001';
 
 use Carp qw( croak );
-use Data::Dumper;
 use Dist::Zilla::App -command;
 use List::Util qw( first );
 use Path::Tiny qw( path );
@@ -86,18 +85,13 @@ sub execute {
 sub _generate_file {
     my ($self, $plugin) = @_;
     my $zilla = $self->zilla;
-    $zilla->log_debug( [ 'zilla: %s', Dumper $zilla ] );
-    # say Dumper($zilla);
 
-    # say '_dist_metadata' . Dumper($self->_dist_metadata());
-    # $zilla->log_debug( [ '_dist_metadata: %s', $self->_dist_metadata()] );
     my $engine = Dist::Zilla::Plugin::WeaveFile::Engine->new(
         config_path => $plugin->config,
         root_dir    => "${\$zilla->root}",
         dist        => $self->_dist_metadata(),
     );
 
-    # say Dumper($engine);
     my $content = $engine->render_file($plugin->file);
     my $target  = path($zilla->root, $plugin->file);
     $target->parent->mkpath;
@@ -120,25 +114,3 @@ sub _dist_metadata {
 }
 
 1;
-
-__END__
-
-=pod
-
-=encoding utf8
-
-=head1 SYNOPSIS
-
-    dzil weave              # generate all configured files
-    dzil weave README.md    # generate a specific file
-    dzil weave --list       # list configured files
-
-=head1 DESCRIPTION
-
-Generates project files defined by C<[WeaveFile / ...]> plugins in
-F<dist.ini>. Each plugin points to a YAML config file containing
-L<Template::Toolkit|Template> templates.
-
-See L<Dist::Zilla::Plugin::WeaveFile> for config file format and usage.
-
-=cut

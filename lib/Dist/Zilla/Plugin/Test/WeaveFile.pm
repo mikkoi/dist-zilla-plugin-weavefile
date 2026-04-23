@@ -96,8 +96,8 @@ has _test_files => (
             );
 
             my $expected  = $engine->render_file($plugin->file);
-            my $safe_name = lc $plugin->file;
-            $safe_name =~ s/[^a-z0-9_]/_/gmsx;
+            my $safe_name = $plugin->file;
+            $safe_name =~ s/[^[:upper:][:lower:][:digit:]_]/_/gmsx;
 
             my $test_path = $self->fill_in_string(
                 $self->filepath_template,

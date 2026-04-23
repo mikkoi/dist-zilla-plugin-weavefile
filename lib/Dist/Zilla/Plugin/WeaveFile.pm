@@ -55,6 +55,8 @@ distribution metadata, and text snippets using templates.
 
 =head1 MOTIVATION
 
+=for stopwords Codeberg GitLab bumber
+
 It used to be so that a B<repository> was only a place of work
 and the B<distribution> was the actual result of that work.
 Only the contents of the distribution mattered. People would
@@ -77,7 +79,7 @@ more than one author or contributor.
 
 When a potential user first finds the project repository,
 the hosting site commonly presents him with the project F<README>
-file. That makes the readme file in fact the B<welcome page>
+file. That makes F<README> file in fact the B<welcome page>
 to the project. Its purpose now is now changed from a purely
 informational introduction to an advertisement which
 competes for user's attention with bright colors,
@@ -107,7 +109,7 @@ because their content is tested continuously.
 
 There are other ways to do this, for instance
 L<Dist::Zilla::Plugin::CopyFilesFromBuild>.
-It is my philosphy that nothing in the repository
+It is my philosophy that nothing in the repository
 is changed I<behind programmer's back>.
 It can also be dangerous to the programmer
 if he is not a frequent Git committer.
@@ -160,6 +162,29 @@ The config file (YAML) has two sections:
             [% pod("My::Module", "SYNOPSIS") %]
             [% pod("My::Module", "DESCRIPTION") %]
             [% snippets.license %]
+
+The plugin L<Dist::Zilla::Plugin::WeaveFile> does not actually do anything,
+except verify the configuration is correct.
+The configuration is used by L<Dist::Zilla::Plugin::Test::WeaveFile>
+when creating the test files during the I<build> phase.
+By default the tests are placed in F<xt/author>
+directory, e.g. F<xt/author/weave_README_md.t>
+
+The configuration is also used by the command C<dzil weave>
+(L<Dist::Zilla::App::Command::weave>).
+Run the command when you need to create or update the files, for example,
+if the tests have failed.
+
+    # usage: dzil weave [<file>]
+    dzil weave README.md
+    # or, to create all files (or none if no defined)
+    dzil policies
+
+During the I<build> phase, when L<Dist::Zilla::Plugin::Test::WeaveFile>
+prepares the test files, it runs the file generation
+just like user would run it manually with C<dzil weave>
+and embeds the result into the equivalent test file. During I<test> phase
+this is compared with the existing file.
 
 =head1 ATTRIBUTES
 
