@@ -80,8 +80,8 @@ more than one author or contributor.
 When a potential user first finds the project repository,
 the hosting site commonly presents him with the project F<README>
 file. That makes F<README> file in fact the B<welcome page>
-to the project. Its purpose now is now changed from a purely
-informational introduction to an advertisement which
+to the project. Its purpose is changed from being purely
+informational to being an advertisement which
 competes for user's attention with bright colors,
 animated pictures, videos and exciting diagrams, shapes
 and "bumper stickers".
@@ -102,13 +102,14 @@ version numbers, API documentation, examples,
 file lists.
 
 It is difficult to keep these files in sync
-with the code. Just like documentation, which fact
+with the code; just like documentation, which fact
 every programmer knows. This L<Dist::Zilla>
 plugin will prevent the files from falling out of sync
 because their content is tested continuously.
 
 There are other ways to do this, for instance
 L<Dist::Zilla::Plugin::CopyFilesFromBuild>.
+
 It is my philosophy that nothing in the repository
 is changed I<behind programmer's back>.
 It can also be dangerous to the programmer
