@@ -7,11 +7,9 @@ use utf8;
 use Test2::V0;
 set_encoding('utf8');
 
-use Carp;
 use English '-no_match_vars';
 use Module::Load qw( load );
 use File::Find ();
-use File::Spec ();
 
 # Add t/lib to @INC
 use FindBin 1.51 qw( $RealBin );
