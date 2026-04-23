@@ -78,6 +78,7 @@ has _test_files => (
             $_->isa('Dist::Zilla::Plugin::WeaveFile')
             && $_->plugin_name ne 'WeaveFile'
         } @{$zilla->plugins};
+        $zilla->log_debug(['plugins: %s', @plugins, ]);
 
         my $dist_meta = {
             name     => $zilla->name,
@@ -96,18 +97,21 @@ has _test_files => (
             );
 
             my $expected  = $engine->render_file($plugin->file);
-            my $safe_name = $plugin->file;
+            my $safe_name = lc $plugin->file;
             $safe_name =~ s/[^[:upper:][:lower:][:digit:]_]/_/gmsx;
+            $zilla->log_debug(['safe_name: %s', $safe_name]);
 
             my $test_path = $self->fill_in_string(
                 $self->filepath_template,
                 { file => $safe_name },
             );
+            $zilla->log_debug(['test_path: %s', $test_path]);
 
             my $content = $self->fill_in_string(
                 ${$self->section_data('test-weave')},
                 { filepath => $plugin->file },
             ) . $expected;
+            $zilla->log_debug(['content: %s', $content]);
 
             push @files, Dist::Zilla::File::InMemory->new(
                 name    => $test_path,
@@ -122,7 +126,8 @@ has _test_files => (
 sub mvp_multivalue_args { return () }
 
 sub gather_files {
-    my $self = shift;
+    my ($self) = @_;
+    $self->zilla->log_debug(['_test_files: %s', $self->_test_files, ]);
     $self->add_file($_) for @{$self->_test_files};
     return;
 }
