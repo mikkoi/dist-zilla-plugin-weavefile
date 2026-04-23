@@ -18,6 +18,21 @@ use Pod::Markdown;
 
 =encoding utf8
 
+=head1 NAME
+
+Dist::Zilla::Plugin::WeaveFile::Engine - Core weaving engine
+
+
+=head1 DESCRIPTION
+
+Renders files by processing L<Template::Toolkit|Template> templates from a
+YAML config, with access to distribution metadata, reusable snippets, and
+a C<pod()> function that extracts POD sections as Markdown.
+
+Not intended for direct use. Called by L<Dist::Zilla::App::Command::weave>
+and L<Dist::Zilla::Plugin::Test::WeaveFile>.
+
+
 =head1 METHODS
 
 =head2 new
@@ -192,24 +207,3 @@ sub _extract_markdown_section {
 }
 
 1;
-
-__END__
-
-=pod
-
-=encoding utf8
-
-=head1 NAME
-
-Dist::Zilla::Plugin::WeaveFile::Engine - Core weaving engine
-
-=head1 DESCRIPTION
-
-Renders files by processing L<Template::Toolkit|Template> templates from a
-YAML config, with access to distribution metadata, reusable snippets, and
-a C<pod()> function that extracts POD sections as Markdown.
-
-Not intended for direct use. Called by L<Dist::Zilla::App::Command::weave>
-and L<Dist::Zilla::Plugin::Test::WeaveFile>.
-
-=cut

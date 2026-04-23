@@ -26,7 +26,7 @@ sub usage_desc { return 'dzil weave [--list] [<file>]' }
 
 sub opt_spec {
     return (
-        [ 'list'      => 'list files defined by WeaveFile plugins' ],
+        [ 'list'      => 'list files defined by WeaveFile plugin entries' ],
         [ 'version|V' => 'print version' ],
     );
 }
