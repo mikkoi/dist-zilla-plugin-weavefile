@@ -7,7 +7,7 @@ use 5.010;
 
 # ABSTRACT: Author tests to verify woven project files are up to date
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use Moose;
 use Dist::Zilla::File::InMemory;
