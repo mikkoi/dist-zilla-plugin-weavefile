@@ -14,7 +14,6 @@ use Test2::V1 qw( -utf8 -x );
 use Test2::Tools::Subtest qw( subtest_streamed );
 use Test2::Tools::GenTemp qw( gen_temp );
 use Test::DZil;
-use Test::Script 1.28;
 
 use Dist::Zilla::Plugin::WeaveFile::Engine;
 
