@@ -55,7 +55,7 @@ distribution metadata, and text snippets using templates.
 
 =head1 MOTIVATION
 
-=for stopwords Codeberg GitLab bumber
+=for stopwords Codeberg GitLab
 
 It used to be so that a B<repository> was only a place of work
 and the B<distribution> was the actual result of that work.
@@ -84,7 +84,7 @@ to the project. Its purpose now is now changed from a purely
 informational introduction to an advertisement which
 competes for user's attention with bright colors,
 animated pictures, videos and exciting diagrams, shapes
-and "bumber stickers".
+and "bumper stickers".
 
 But under all the exciting cover it must also remain
 true to its nature: present the project
