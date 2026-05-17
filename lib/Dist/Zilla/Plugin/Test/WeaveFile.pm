@@ -97,7 +97,7 @@ has _test_files => (
             );
 
             my $expected  = $engine->render_file($plugin->file);
-            my $safe_name = lc $plugin->file;
+            my $safe_name = $plugin->file;
             $safe_name =~ s/[^[:upper:][:lower:][:digit:]_]/_/gmsx;
             $zilla->log_debug(['safe_name: %s', $safe_name]);
 
